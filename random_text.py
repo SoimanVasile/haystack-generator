@@ -5,6 +5,7 @@ import time
 FILENAME = "huge_test_file.txt"
 TOTAL_LINES = 10_000
 WORDS_PER_LINE = 1_000
+NEEDLE_CHANCE = 0.05
 
 # Vocabulary to construct the noise
 VOCAB = [
@@ -37,7 +38,7 @@ def generate_file():
             current_line = base_line_words[:]
 
             # 5% chance to insert a "Target Word" into this line
-            if random.random() < 0.05:
+            if random.random() < NEEDLE_CHANCE:
                 target = random.choice(TARGETS)
                 # Insert at a random position
                 pos = random.randint(0, WORDS_PER_LINE - 1)
